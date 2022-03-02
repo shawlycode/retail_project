@@ -5,6 +5,7 @@ import Home from '../components/Home';
 import Setting from '../components/Setting'
 import { Ionicons, Feather } from '@expo/vector-icons';
 import Transactions from '../components/Transactions';
+import Search from '../Screens/Search';
 
 
 const Tab = createBottomTabNavigator();
@@ -29,6 +30,15 @@ const Tabs = () => {
                 tabBarIcon: ({ focused }) => (
                     < Feather
                         name="activity"
+                        size={38}
+                        color={focused ? "#8f00ff" : "#1b3a4b"}
+                    />
+                ),
+            }} />
+            <Tab.Screen name="search" component={Search} options={{
+                tabBarIcon: ({ focused }) => (
+                    < Ionicons
+                        name="search-outline"
                         size={38}
                         color={focused ? "#8f00ff" : "#1b3a4b"}
                     />
