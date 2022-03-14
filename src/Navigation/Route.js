@@ -4,9 +4,10 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from "@react-navigation/stack"
 import Tabs from './Tabs';
 
+
 const Stack = createStackNavigator();
 
-const Route = () => {
+const Route = ({ route, navigation }) => {
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -16,6 +17,7 @@ const Route = () => {
                 }} >
                 <Stack.Screen name='home' component={Tabs}
                     options={{ headerShown: false }} />
+
             </Stack.Navigator>
 
         </NavigationContainer>
