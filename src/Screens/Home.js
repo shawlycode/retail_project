@@ -65,13 +65,13 @@ const Card = ({ category, navigation }) => {
 
 const HomeScreen = ({ navigation }) => {
     const [selectedCategoryIndex, setSeletedCategoryIndex] = React.useState(0);
-    const [filteredPets, setFilteredPets] = React.useState([]);
+    const [filteredProducts, setFilteredProducts] = React.useState([]);
 
     const filterProduct = index => {
         const current_products = products.filter(
             item => item?.category?.toUpperCase() == product_Category[index].name,
         )[0]?.products;
-        setFilteredPets(current_products);
+        setFilteredProducts(current_products);
     };
 
     React.useEffect(() => {
@@ -161,7 +161,7 @@ const HomeScreen = ({ navigation }) => {
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             numColumns={3}
-                            data={filteredPets}
+                            data={filteredProducts}
                             renderItem={({ item }) => (
                                 <Card category={item} navigation={navigation} />
                             )}
