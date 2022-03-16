@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from "@react-navigation/stack"
 import Tabs from './Tabs';
+import Details from '../Screens/Details'
 
 
 const Stack = createStackNavigator();
@@ -16,6 +17,8 @@ const Route = ({ route, navigation }) => {
 
                 }} >
                 <Stack.Screen name='home' component={Tabs}
+                    options={{ headerShown: false }} />
+                <Stack.Screen name='details' component={Details}
                     options={{ headerShown: false }} />
 
             </Stack.Navigator>

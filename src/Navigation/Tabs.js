@@ -2,8 +2,12 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import Home from '../Screens/Home';
+import Cart from '../Screens/Cart';
+import Transaction from '../Screens/Transaction';
+import Account from '../Screens/Account';
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons, Fontisto } from '@expo/vector-icons';
+import { COLORS } from '../Global/Data';
 
 
 
@@ -20,8 +24,35 @@ const Tabs = () => {
                 tabBarIcon: ({ focused }) => (
                     <Ionicons
                         name="home"
-                        size={38}
-                        color={focused ? "#8f00ff" : "#1b3a4b"}
+                        size={30}
+                        color={focused ? COLORS.primary : "tomato"}
+                    />
+                ),
+            }} />
+            <Tab.Screen name="transaction" component={Transaction} options={{
+                tabBarIcon: ({ focused }) => (
+                    < MaterialCommunityIcons
+                        name="chart-arc"
+                        size={30}
+                        color={focused ? COLORS.primary : "tomato"}
+                    />
+                ),
+            }} />
+            <Tab.Screen name="cart" component={Cart} options={{
+                tabBarIcon: ({ focused }) => (
+                    <Fontisto
+                        name="shopping-basket"
+                        size={30}
+                        color={focused ? COLORS.primary : "tomato"}
+                    />
+                ),
+            }} />
+            <Tab.Screen name="account" component={Account} options={{
+                tabBarIcon: ({ focused }) => (
+                    <Fontisto
+                        name="person"
+                        size={30}
+                        color={focused ? COLORS.primary : "tomato"}
                     />
                 ),
             }} />
