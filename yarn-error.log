@@ -14,15 +14,8 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: connect ENETUNREACH 104.16.20.35:443 - Local (0.0.0.0:49696)
-      at internalConnect (net.js:923:16)
-      at defaultTriggerAsyncIdScope (internal/async_hooks.js:435:18)
-      at emitLookup (net.js:1066:9)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:107131:28
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:107040:13
-      at RawTask.module.exports.RawTask.call (/usr/local/lib/node_modules/yarn/lib/cli.js:83614:19)
-      at flush (/usr/local/lib/node_modules/yarn/lib/cli.js:83696:29)
-      at processTicksAndRejections (internal/process/task_queues.js:77:11)
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:69:26)
 
 npm manifest: 
   {

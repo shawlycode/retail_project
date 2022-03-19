@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   ImageBackground,
@@ -7,102 +7,142 @@ import {
   View,
   Image,
   StyleSheet,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { COLORS, products } from '../Global/Data';
+} from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { COLORS, products } from "../Global/Data";
 
 const DetailsScreen = ({ navigation, route }) => {
   const category = route.params;
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-      <StatusBar backgroundColor={COLORS.background} />
-      <View style={{ height: 400, backgroundColor: COLORS.background }}>
+    <View style={{ flex: 1, backgroundColor: COLORS.background }}>
+      <StatusBar barStyle="dark-content" />
+
+      <View style={{ width: "100%", height: '50%' }}>
         <ImageBackground
           resizeMode="cover"
           source={category?.image}
           style={{
-            height: 200,
-            top: 20,
-          }}>
+            height: "100%",
+            width: "100%",
+
+          }}
+        >
           {/* Render  Header */}
           <View style={style.header}>
             <Icon
               name="arrow-left"
-              size={28}
-              color={COLORS.dark}
+              size={34}
+              color={COLORS.white}
               onPress={navigation.goBack}
             />
-            <Icon name="dots-vertical" size={28} color={COLORS.dark} />
           </View>
         </ImageBackground>
+      </View>
+      <View
+        style={{
+          backgroundColor: COLORS.white,
+          height: 300,
+          width: "100%",
+          borderBottomEndRadius: 30,
 
-        <View style={style.detailsContainer}>
-
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginHorizontal: 30,
+            paddingVertical: 20,
+          }}
+        >
+          <View
+            style={{
+              width: 90,
+              height: 50,
+              backgroundColor: COLORS.dark,
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: 10,
+            }}
+          >
             <Text
-              style={{ fontSize: 20, color: COLORS.dark, fontWeight: 'bold' }}>
+              style={{ fontSize: 20, fontWeight: "bold", color: COLORS.white }}
+            >
               {category.name}
             </Text>
-            <Text
-              style={{ fontSize: 20, color: COLORS.dark, fontWeight: 'bold' }}>
-              {category.description}
-            </Text>
-            <Text
-              style={{ fontSize: 20, color: COLORS.dark, fontWeight: 'bold' }}>
-              {category.price}
-            </Text>
-            <Icon name="heart" size={25} color={COLORS.grey} />
           </View>
-
-        </View>
-      </View>
-
-
-      <View style={{ marginTop: 80, justifyContent: 'space-between', flex: 1 }}>
-
-
-        {/* Render button */}
-        <View style={style.footer}>
-          <View style={style.iconCon}>
-            <Icon name="heart-outline" size={22} color={COLORS.white} />
-          </View>
-          <View style={style.btn}>
-            <Text style={{ color: COLORS.white, fontWeight: 'bold' }}>
-              ADD TO CART
+          <View
+            style={{
+              width: 120,
+              height: 50,
+              backgroundColor: COLORS.dark,
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: 10,
+            }}
+          >
+            <Text
+              style={{ fontSize: 20, fontWeight: "bold", color: COLORS.white }}
+            >
+              &#x20B5;{category.price}.00
             </Text>
           </View>
         </View>
+        <View>
+          <Text style={{ fontSize: 22, fontStyle: "italic", letterSpacing: 1, paddingHorizontal: 15 }}>{category.description}</Text>
+        </View>
+        <View style={{ alignItems: "flex-end", marginTop: 20, marginRight: 30 }}>
+          <TouchableOpacity style={{
+            width: 150,
+            height: 60,
+            backgroundColor: COLORS.dark,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 10,
+          }}
+            onPress={() => navigation.navigate({ category }, 'cart')}>
+            <Text style={{ fontSize: 20, fontWeight: "bold", color: COLORS.white }}>ADD TO CART</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </SafeAreaView>
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate('homeScreen')}
+          style={{
+            width: 200,
+            height: 60,
+            backgroundColor: COLORS.dark,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 10,
+          }}>
+          <Text style={{ fontSize: 20, fontWeight: "bold", color: COLORS.white }}>Continue Shopping</Text>
+        </TouchableOpacity>
+      </View>
+    </View >
   );
 };
 
 const style = StyleSheet.create({
   detailsContainer: {
     height: 120,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.dark,
     marginHorizontal: 20,
     flex: 1,
     bottom: -60,
     borderRadius: 18,
     elevation: 10,
     padding: 20,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
-  comment: {
-    marginTop: 10,
-    fontSize: 12.5,
-    color: COLORS.dark,
-    lineHeight: 20,
-    marginHorizontal: 20,
-  },
+
   footer: {
     height: 100,
     backgroundColor: COLORS.light,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 30,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 20,
   },
   iconCon: {
@@ -110,8 +150,8 @@ const style = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 15,
   },
   btn: {
@@ -119,13 +159,19 @@ const style = StyleSheet.create({
     flex: 1,
     height: 50,
     borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   header: {
-    flexDirection: 'row',
-    padding: 20,
-    justifyContent: 'space-between',
+    position: "absolute",
+    top: 80,
+    left: 15,
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    backgroundColor: COLORS.dark,
+    justifyContent: "center",
+    alignItems: "center"
   },
 });
 export default DetailsScreen;

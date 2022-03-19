@@ -10,11 +10,14 @@ import {
     FlatList,
     ScrollView,
     StyleSheet,
+    StatusBar,
 } from 'react-native';
 import { COLORS } from '../Global/Data';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { products } from '../Global/Data'
 const { height } = Dimensions.get('window');
+
+
 const product_Category = [
     { name: 'FROZEN FOODS', id: '2773', image: require('../../assets/category_img/frozen-yogurt.png') },
     { name: 'BAKES & SNACKS', id: "hhd", image: require('../../assets/category_img/cookie.png') },
@@ -27,7 +30,7 @@ const Card = ({ category, navigation }) => {
         <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => navigation.navigate('details', category)}>
-            <View style={style.cardContainer}>
+            <View style={{ justifyContent: "center", alignItems: "center", marginLeft: 12, borderWidth: 1, borderRadius: 10, marginBottom: 10 }}>
                 {/* Render the card image */}
                 <View style={style.cardImageContainer}>
                     <Image
@@ -36,6 +39,9 @@ const Card = ({ category, navigation }) => {
                             width: '100%',
                             height: '100%',
                             resizeMode: 'cover',
+                            borderTopRightRadius: 10,
+                            borderTopLeftRadius: 10,
+
                         }}
                     />
                 </View>
@@ -52,7 +58,7 @@ const Card = ({ category, navigation }) => {
                     </View>
 
                     <Text style={{ fontSize: 20, marginTop: 5, color: COLORS.dark }}>
-                        &#x20B5; {category?.price}
+                        &#x20B5; {category?.price}.00
                     </Text>
 
 
@@ -120,75 +126,84 @@ const HomeScreen = ({ navigation }) => {
         )
     }
     return (
-        <SafeAreaView style={{ flex: 1, color: COLORS.white }}>
-            <View style={style.header}>
-                <Icon name="sort-variant" size={28} onPress={navigation.toggleDrawer} />
-                <Text style={{ color: COLORS.primary, fontWeight: 'bold', fontSize: 16 }}>
-                    JANE GARY
-                </Text>
-                <Image
-                    source={require('../../assets/person.jpg')}
-                    style={{ height: 30, width: 30, borderRadius: 25 }}
-                />
-            </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={style.mainContainer}>
-                    {/* Render the search inputs */}
-                    <View style={style.searchInputContainer}>
-                        <Icon name="magnify" size={24} color={COLORS.grey} />
-                        <TextInput
-                            placeholderTextColor={COLORS.grey}
-                            placeholder="Search pet to adopt"
-                            style={{ flex: 1 }}
+        <>
+            <View style={{ flex: 1, backgroundColor: COLORS.background, justifyContent: "center", paddingTop: 50 }}>
+                <StatusBar barStyle='dark-content' />
+
+                <View style={style.header}>
+                    <TouchableOpacity onPress={navigation.toggleDrawer}>
+                        <Icon name="sort-variant" size={28} />
+
+                    </TouchableOpacity>
+                    <Text style={{ color: COLORS.primary, fontWeight: 'bold', fontSize: 16 }}>
+                        JANE GARY
+                    </Text>
+                    <TouchableOpacity >
+                        <Image
+                            source={require('../../assets/person.jpg')}
+                            style={{ height: 30, width: 30, borderRadius: 25 }}
                         />
-                        <Icon name="sort-ascending" size={24} color={COLORS.grey} />
-                    </View>
-
-                    {/* Render all the categories */}
-                    <View>
-                        <FlatList
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
-                            data={product_Category}
-                            renderItem={(renderItem_Category)}
-
-
-                        />
-                    </View>
-
-                    {/* Render the cards with flat list */}
-                    <View style={{ marginTop: 20 }}>
-                        <FlatList
-                            showsVerticalScrollIndicator={false}
-                            numColumns={3}
-                            data={filteredProducts}
-                            renderItem={({ item }) => (
-                                <Card category={item} navigation={navigation} />
-                            )}
-                        />
-                    </View>
+                    </TouchableOpacity>
                 </View>
-            </ScrollView>
-        </SafeAreaView>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={style.mainContainer}>
+                        {/* Render the search inputs */}
+                        <View style={style.searchInputContainer}>
+                            <Icon name="magnify" size={24} color={COLORS.grey} />
+                            <TextInput
+                                placeholderTextColor={COLORS.grey}
+                                placeholder="Search pet to adopt"
+                                style={{ flex: 1 }}
+                            />
+                            <Icon name="sort-ascending" size={24} color={COLORS.grey} />
+                        </View>
+
+                        {/* Render all the categories */}
+                        <View>
+                            <FlatList
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                                data={product_Category}
+                                renderItem={(renderItem_Category)}
+
+
+                            />
+                        </View>
+
+                        {/* Render the cards with flat list */}
+                        <View style={{ marginTop: 20 }}>
+                            <FlatList
+                                showsVerticalScrollIndicator={false}
+                                numColumns={3}
+                                data={filteredProducts}
+                                renderItem={({ item }) => (
+                                    <Card category={item} navigation={navigation} />
+                                )}
+                            />
+                        </View>
+                    </View>
+                </ScrollView>
+
+            </View>
+        </>
     );
 };
 
 const style = StyleSheet.create({
+    mainContainer: {
+        flex: 1,
+        width: "100%",
+        justifyContent: "center",
+        marginTop: 30,
+        justifyContent: "center",
+    },
     header: {
-        padding: 20,
+
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-    },
-    mainContainer: {
-        flex: 1,
-        backgroundColor: COLORS.background,
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
-        marginTop: 20,
-        paddingHorizontal: 20,
-        paddingVertical: 40,
-        minHeight: height,
+        marginHorizontal: 20
+
     },
     searchInputContainer: {
         height: 50,
@@ -197,6 +212,7 @@ const style = StyleSheet.create({
         paddingHorizontal: 20,
         flexDirection: 'row',
         alignItems: 'center',
+        marginHorizontal: 10
 
     },
     categoryBtn: {
@@ -205,37 +221,45 @@ const style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-        margin: 5
+        margin: 5,
+        marginHorizontal: 10
     },
     categoryBtnName: {
         color: COLORS.dark,
         fontSize: 12,
         marginTop: 5,
         fontWeight: 'bold',
-        marginRight: 10
+        marginRight: 10,
+        textAlign: "center"
     },
-    // cardContainer: {
-    //     marginHorizontal: 3,
-    //     alignItems: 'center',
-    //     marginBottom: 20,
-    // },
+    cardContainer: {
+        alignItems: "center",
+        backgroundColor: COLORS.grey,
+
+        marginBottom: 10,
+        borderRadius: 10,
+        justifyContent: "center",
+        borderWidth: 2,
+
+
+
+
+
+    },
     cardDetailsContainer: {
-        height: 120,
+        height: 90,
         width: 120,
-        marginHorizontal: 3,
-        backgroundColor: COLORS.white,
-        flex: 1,
-        borderTopRightRadius: 5,
-        borderBottomRightRadius: 5,
-        padding: 20,
-        justifyContent: 'center',
+        justifyContent: "center",
+        alignItems: "center",
+
+
+
     },
     cardImageContainer: {
-        height: 120,
         width: 120,
-        borderWidth: 0.5,
-        borderColor: COLORS.dark,
-        marginBottom: 1
+        height: 100,
+        borderRadius: 10,
+
 
 
     },

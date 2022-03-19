@@ -7,7 +7,7 @@ export const COLORS = {
   light: '#f5f5f5',
   grey: '#a8a8a8',
   green: "#80ed99",
-  background: "#ade8f4",
+  background: "#caf0f8",
 };
 
 
@@ -20,21 +20,36 @@ export const products = [
         name: 'sugar',
         image: require('../../assets/sugar.jpeg'),
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
-        price: "25.00"
+        price: "25"
       },
       {
         id: '2',
         name: 'Milo',
         image: require('../../assets/milo.jpeg'),
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
-        price: "40.00"
+        price: "40"
       },
+      {
+        id: '5',
+        name: 'Milo',
+        image: require('../../assets/milo.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "40"
+      },
+      {
+        id: '10',
+        name: 'Milo',
+        image: require('../../assets/milo.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "40"
+      },
+
       {
         id: '3',
         name: 'Milk',
         image: require('../../assets/milk.jpg'),
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
-        price: "25.00"
+        price: "25"
       },
     ],
   },
@@ -43,10 +58,31 @@ export const products = [
     products: [
       {
         id: '1',
-        name: 'Short Bread',
+        name: 'Indomie',
         image: require('../../assets/indomie.jpeg'),
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
-        price: "25.00"
+        price: "25"
+      },
+      {
+        id: '11',
+        name: 'Indomie',
+        image: require('../../assets/indomie.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "25"
+      },
+      {
+        id: '13',
+        name: 'Indomie',
+        image: require('../../assets/indomie.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "25"
+      },
+      {
+        id: '18',
+        name: 'Indomie',
+        image: require('../../assets/indomie.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "25"
       },
     ],
   },
@@ -58,7 +94,21 @@ export const products = [
         name: 'Rice',
         image: require('../../assets/rice.jpeg'),
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
-        price: "25.00"
+        price: "25"
+      },
+      {
+        id: '1s',
+        name: 'Rice',
+        image: require('../../assets/rice.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "25"
+      },
+      {
+        id: '1df',
+        name: 'Rice',
+        image: require('../../assets/rice.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "25"
       },
 
     ],
@@ -71,14 +121,28 @@ export const products = [
         name: 'Always',
         image: require('../../assets/sanitary.jpeg'),
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
-        price: "25.00"
+        price: "25"
       },
       {
         id: '2',
         name: 'Colgate',
         image: require('../../assets/paste.jpeg'),
         description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
-        price: "25.00"
+        price: "25"
+      },
+      {
+        id: '1vv',
+        name: 'Always',
+        image: require('../../assets/sanitary.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "25"
+      },
+      {
+        id: '3',
+        name: 'Colgate',
+        image: require('../../assets/paste.jpeg'),
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+        price: "25"
       },
     ],
   },
